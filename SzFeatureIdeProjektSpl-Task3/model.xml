@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+	<featureModel>
+		<properties/>
+		<struct>
+			<and abstract="true" mandatory="true" name="SzFeatureIdeProjektSplTask2">
+				<and abstract="true" mandatory="true" name="Einheiten-Konverter">
+					<and abstract="true" mandatory="true" name="KonverterType">
+						<description>
+							The type of conversion
+						</description>
+						<description>
+							The type of conversion
+						</description>
+						<feature mandatory="true" name="Length">
+							<description>
+								Length Measures
+							</description>
+						</feature>
+						<feature name="Volume">
+							<description>
+								Kubik (meter, ...), Liter, Gallon...
+							</description>
+						</feature>
+						<feature abstract="true" name="Mass">
+							<description>
+								e.g. kg, pound
+							</description>
+						</feature>
+						<feature abstract="true" name="Area">
+							<description>
+								e.g. m², square feet
+							</description>
+						</feature>
+						<feature abstract="true" name="Speed">
+							<description>
+								mph, km/h, c
+							</description>
+						</feature>
+						<feature abstract="true" name="Temperature">
+							<description>
+								Celsius, Fahrenheit, Kelvin
+							</description>
+						</feature>
+						<feature abstract="true" name="Energy">
+							<description>
+								e.g. Joule, Ws, kWh...
+							</description>
+						</feature>
+						<feature abstract="true" name="Power">
+							<description>
+								e.g. Watt &amp; PS
+							</description>
+						</feature>
+					</and>
+					<and abstract="true" mandatory="true" name="UI">
+						<description>
+							UI features
+						</description>
+						<description>
+							UI features
+						</description>
+						<and abstract="true" mandatory="true" name="InputOutput">
+							<description>
+								Holds all features related to the input &amp; output of the values
+							</description>
+							<description>
+								Holds all features related to the input &amp; output of the values
+							</description>
+							<alt abstract="true" mandatory="true" name="SingleValue">
+								<description>
+									One value input e.g. 1000kg
+								</description>
+								<description>
+									One value input e.g. 1000kg
+								</description>
+								<feature mandatory="true" name="OutputSingle">
+									<description>
+										One value is outputed (e.g. 1g)
+									</description>
+								</feature>
+								<feature abstract="true" mandatory="true" name="OutputMultiple">
+									<description>
+										Multiple values are shown on one input (e.g.: Input: 1km; Output: 1000m, 1km, 100000cm)
+									</description>
+								</feature>
+							</alt>
+							<feature abstract="true" name="MultipleValues"/>
+							<and abstract="true" name="Range">
+								<description>
+									A range e.g. (1,99) is chosen and converted
+								</description>
+								<description>
+									A range e.g. (1,99) is chosen and converted
+								</description>
+								<feature abstract="true" name="Graph">
+									<description>
+										A graph is shown to illustrate the relation between input and output range
+									</description>
+								</feature>
+							</and>
+							<feature abstract="true" name="PlausibilityChecking">
+								<description>
+									Check if input is plausible
+								</description>
+							</feature>
+							<feature abstract="true" name="ShowFunction">
+								<description>
+									Shows the function used to calculate the output
+								</description>
+							</feature>
+							<alt abstract="true" mandatory="true" name="TypeInput">
+								<description>
+									How the type input (km, m²) is handled, either show possible type and let him choose or parse from input.
+								</description>
+								<description>
+									How the type input (km, m²) is handled, either show possible type and let him choose or parse from input.
+								</description>
+								<feature mandatory="true" name="LetUserChoose"/>
+								<feature abstract="true" mandatory="true" name="ParseType"/>
+							</alt>
+						</and>
+						<alt abstract="true" mandatory="true" name="Type">
+							<feature mandatory="true" name="Console">
+								<description>
+									Console UI
+								</description>
+							</feature>
+							<feature abstract="true" mandatory="true" name="Graphical">
+								<description>
+									A graphical UI
+								</description>
+							</feature>
+						</alt>
+						<and abstract="true" name="Usability">
+							<description>
+								Usability features
+							</description>
+							<description>
+								Usability features
+							</description>
+							<feature abstract="true" name="SaveLoadCurrentValue">
+								<description>
+									Saves &amp; Loads the current value(s) shown to the user.
+								</description>
+							</feature>
+							<and abstract="true" name="History">
+								<description>
+									Build history of current and past conversions
+								</description>
+								<description>
+									Build history of current and past conversions
+								</description>
+								<feature abstract="true" mandatory="true" name="Save"/>
+								<feature abstract="true" mandatory="true" name="LoadAndShow"/>
+								<feature abstract="true" name="Clear"/>
+							</and>
+						</and>
+					</and>
+				</and>
+			</and>
+		</struct>
+		<constraints>
+			<rule>
+				<imp>
+					<var>Console</var>
+					<not>
+						<disj>
+							<var>MultipleValues</var>
+							<disj>
+								<var>Usability</var>
+								<disj>
+									<var>ShowFunction</var>
+									<var>Range</var>
+								</disj>
+							</disj>
+						</disj>
+					</not>
+				</imp>
+			</rule>
+			<rule>
+				<imp>
+					<var>ParseType</var>
+					<var>Console</var>
+				</imp>
+			</rule>
+		</constraints>
+		<calculations Auto="true" Constraints="true" Features="true" Redundant="true" Tautology="true"/>
+		<comments/>
+		<featureOrder userDefined="false"/>
+	</featureModel>
