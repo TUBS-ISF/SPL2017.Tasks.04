@@ -1,0 +1,7 @@
+Console => ParseType Constraint
+- Falls nur Konsole verfügbar soll dem Nutzer auch das alternative Feature (LetUserChoose) zur Verfügung stehen
+
+Änderung zu
+ParseType => Console
+Das GUI Feature soll keinen ParseType haben, da DropDown Felder Benutzerfreundlicher sind
+ 
