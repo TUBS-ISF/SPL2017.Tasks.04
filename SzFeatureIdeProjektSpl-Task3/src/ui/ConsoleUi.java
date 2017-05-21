@@ -91,13 +91,17 @@ public class ConsoleUi {
 		}
 		if (chosenKonverterFeature.get(chosenFeature).equals("Length")) {
 			this.showLengthMenu();
-		} 
+		}
+		//#if Mass
 		else if (chosenKonverterFeature.get(chosenFeature).equals("Mass")) {
 			this.showMassMenu();
 		}
+		//#endif
+		//#if Volume
 		else if (chosenKonverterFeature.get(chosenFeature).equals("Volume")) {
 			this.showVolumeMenu();
 		}
+		//#endif
 		
 //		switch (chosenFeature) {
 //		case 1: 
