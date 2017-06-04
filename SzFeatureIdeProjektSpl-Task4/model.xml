@@ -21,7 +21,7 @@
 								Kubik (meter, ...), Liter, Gallon...
 							</description>
 						</feature>
-						<feature abstract="true" name="Mass">
+						<feature name="Mass">
 							<description>
 								e.g. kg, pound
 							</description>
@@ -125,7 +125,7 @@
 									Console UI
 								</description>
 							</feature>
-							<feature abstract="true" mandatory="true" name="Graphical">
+							<feature mandatory="true" name="Graphical">
 								<description>
 									A graphical UI
 								</description>

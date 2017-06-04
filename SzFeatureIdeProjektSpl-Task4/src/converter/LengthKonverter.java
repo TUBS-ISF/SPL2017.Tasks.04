@@ -1,17 +1,17 @@
 package converter;
-//#if Length 
+ 
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class LengthKonverter extends KonverterType {
+public class LengthKonverter implements KonverterTypePlugin {
 	
 	public enum LengthType {
 	    m, km, mm, cm 
 	} 
 
 	@Override
-	protected double operator(double operand, String sourceType, String destinationType) throws NotSupportedException {
+	public double convert(double operand, String sourceType, String destinationType) throws NotSupportedException {
 		System.out.println("operand "+operand + " sourceType " + sourceType + " destinationType " + destinationType);
 		if(operand < 0) {
 			System.err.println("Value needs to be >= 0: " + destinationType + " not defined");
@@ -28,12 +28,7 @@ public class LengthKonverter extends KonverterType {
 		//return -1;
 	}
 
-	@Override
-	protected double operator(double operand1, double operand2, String sourceType, String destinationType) throws NotSupportedException {
-		throw new NotSupportedException("NotSupportedException");
-		//return -1.0;
-	}
-	
+
 	private double convKm(double value, String destinationType) {
 		return this.convM(value, destinationType, 1000);
 	}
@@ -70,4 +65,4 @@ public class LengthKonverter extends KonverterType {
 	}
 
 }
-//#endif
+

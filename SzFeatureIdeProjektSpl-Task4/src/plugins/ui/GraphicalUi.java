@@ -1,8 +1,8 @@
-package ui;
+package plugins.ui;
 
 import javax.swing.JFrame;
 
-import converter.KonverterType;
+import converter.KonverterTypePlugin;
 import converter.LengthKonverter;
 import converter.NotSupportedException;
 

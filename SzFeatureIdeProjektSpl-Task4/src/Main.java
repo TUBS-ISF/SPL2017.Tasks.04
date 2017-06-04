@@ -1,17 +1,22 @@
 import java.lang.System;
 
 import converter.NotSupportedException;
-
-//#if Console 
-import ui.ConsoleUi;
-//#endif
+import plugins.Plugin;
+import plugins.ui.ConsoleUi;
 
 public class Main {
 	
+	/**
+	 * The preprocessor antenna is used to activate the plugins
+	 * 
+	 * 
+	 */
 
 
 	public static void main(String[] args) throws NotSupportedException {
 		System.out.println("Start...");
+		Plugin plugin;
+		
 		boolean uiTypeConsole = false;
 		boolean uiTypeGraphical = false;
 		boolean ioSingleValueOutputSingle = false;
@@ -23,57 +28,58 @@ public class Main {
 		boolean converterVolume = false;
 		boolean converterMass = false;
 		
-		//============= Feature activation =============
+		//============= Plugin activation =============
 		//#if Console 
 		uiTypeConsole = true;
-		System.out.println("Console Feature Active");
+		System.out.println("Console Plugin Active");
+		plugin = new plugins.ui.ConsoleUi();
 		//#endif
 		
 		//#if Graphical 
 //@		uiTypeGraphical = true;
-//@		System.out.println("Graphical Feature Active");
+//@		System.out.println("Graphical Plugin Active");
 		//#endif
 		
 		//#if OutputSingle 
 		ioSingleValueOutputSingle = true;
-		System.out.println("OutputSingle Feature Active");
+		System.out.println("OutputSingle Plugin Active");
 		//#endif
 		
 		//#if OutputMultiple 
 //@		ioSingleValueOutputMultiple = true;
-//@		System.out.println("OutputMultiple Feature Active");
+//@		System.out.println("OutputMultiple Plugin Active");
 		//#endif
 		
 		//#if MultipleValues 
 //@		ioMultipleValues = true;
-//@		System.out.println("MultipleValues Feature Active");
+//@		System.out.println("MultipleValues Plugin Active");
 		//#endif
 		
 		//#if LetUserChoose 
 		letUserChoose = true;
-		System.out.println("LetUserChoose Feature Active");
+		System.out.println("LetUserChoose Plugin Active");
 		//#endif
 		
 		//#if ParseType 
 //@		parseType = true;
-//@		System.out.println("ParseType Feature Active");
+//@		System.out.println("ParseType Plugin Active");
 		//#endif
 		
 		//#if Length 
 		converterLength = true;
-		System.out.println("Length Feature Active");
+		System.out.println("Length Plugin Active");
 		//#endif
 		
 		//#if Volume 
-//@		converterVolume = true;
-//@		System.out.println("Volume Feature Active");
+		converterVolume = true;
+		System.out.println("Volume Plugin Active");
 		//#endif
 		
 		//#if Mass 
-//@		converterMass = true;
-//@		System.out.println("Mass Feature Active");
+		converterMass = true;
+		System.out.println("Mass Plugin Active");
 		//#endif
-		//============= Feature activation /> =============
+		//============= Plugin activation /> =============
 		
 		
 		//#if Console 

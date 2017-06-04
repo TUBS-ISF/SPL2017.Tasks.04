@@ -1,25 +1,26 @@
-package ui;
+package plugins.ui;
 
-//#if Console 
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 
-import converter.KonverterType;
+import converter.KonverterTypePlugin;
 //#if Length
 import converter.LengthKonverter; //default, preprop directive not needed
 //#endif
 //#if Volume
-//@import converter.VolumeConverter;
+import converter.VolumeConverter;
 //#endif
 //#if Mass
-//@import converter.MassConverter;
+import converter.MassConverter;
 //#endif
 import converter.NotSupportedException;
+import plugins.Plugin;
 
-public class ConsoleUi {
+public class ConsoleUi implements Plugin {
 	boolean featureParseType = false; //TODO - default is let user choose
 	Map<Integer, String> chosenKonverterFeature;
 
@@ -43,23 +44,23 @@ public class ConsoleUi {
 		String lengthEntry = "# " +counter+ ") Length";
 		chosenKonverterFeature.put(counter, "Length");
 		//#if Volume
-//@		counter += 1;
-//@		String volumeEntry = "# " +counter+ ") Volume";
-//@		chosenKonverterFeature.put(counter, "Volume");
+		counter += 1;
+		String volumeEntry = "# " +counter+ ") Volume";
+		chosenKonverterFeature.put(counter, "Volume");
 		//#endif
 		//#if Mass
-//@		counter += 1;
-//@		String massEntry = "# " +counter+ ") Mass";
-//@		chosenKonverterFeature.put(counter, "Mass");
+		counter += 1;
+		String massEntry = "# " +counter+ ") Mass";
+		chosenKonverterFeature.put(counter, "Mass");
 		//#endif
 		typeMenuEntries = new ArrayList<>();
 		
 		typeMenuEntries.add(lengthEntry);
 		//#if Volume
-//@		typeMenuEntries.add(volumeEntry);
+		typeMenuEntries.add(volumeEntry);
 		//#endif
 		//#if Mass
-//@		typeMenuEntries.add(massEntry);
+		typeMenuEntries.add(massEntry);
 		//#endif
 		
 	}
@@ -93,14 +94,14 @@ public class ConsoleUi {
 			this.showLengthMenu();
 		}
 		//#if Mass
-//@		else if (chosenKonverterFeature.get(chosenFeature).equals("Mass")) {
-//@			this.showMassMenu();
-//@		}
+		else if (chosenKonverterFeature.get(chosenFeature).equals("Mass")) {
+			this.showMassMenu();
+		}
 		//#endif
 		//#if Volume
-//@		else if (chosenKonverterFeature.get(chosenFeature).equals("Volume")) {
-//@			this.showVolumeMenu();
-//@		}
+		else if (chosenKonverterFeature.get(chosenFeature).equals("Volume")) {
+			this.showVolumeMenu();
+		}
 		//#endif
 		
 //		switch (chosenFeature) {
@@ -125,133 +126,133 @@ public class ConsoleUi {
 	}
 	
 	//#if Volume
-//@	private void showVolumeMenu() throws NotSupportedException {
-//@		String menuSource = "######################################\n"
-//@				+ "# please provide source type\n"
-//@				+ "# 1) m^2\n"
-//@				+ "# 2) cm^2\n"
-//@				+ "######################################\n";
-//@		System.out.println(menuSource);
-//@		
-//@		Scanner in = new Scanner(System.in);
-//@		int sourceType = in.nextInt();
-//@		String sourceTypeStr;
-//@		switch (sourceType) {
-//@		case 1:
-//@			sourceTypeStr = "m2";
-//@			break;
-//@		case 2:
-//@			sourceTypeStr = "cm2";
-//@			break;
-//@		default:
-//@			sourceTypeStr = "not found";
-//@			break;
-//@		}
-//@		System.out.println("Chosen source type: " + sourceTypeStr);
-//@		
-//@		String menuDest = "######################################\n"
-//@				+ "# please provide output type\n"
-//@				+ "# 1) m^2\n"
-//@				+ "# 2) cm^2\n"
-//@				+ "######################################\n";
-//@		System.out.println(menuDest);
-//@		
-//@		Scanner in2 = new Scanner(System.in);
-//@		int destType = in2.nextInt();
-//@		String destTypeStr;
-//@		switch (destType) {
-//@		case 1:
-//@			destTypeStr = "m2";
-//@			break;
-//@		case 2:
-//@			destTypeStr = "cm2";
-//@			break;
-//@		
-//@		default:
-//@			destTypeStr = "not found";
-//@			break;
-//@		}
-//@		System.out.println("Chosen destination type: " + destTypeStr);
-//@		
-//@		String menuValue = "######################################\n"
-//@				+ "# please provide value to convert (e.g. 100,5) \n"
-//@				+ "# ?\n"
-//@				+ "######################################\n";
-//@		System.out.println(menuValue);
-//@		
-//@		Scanner in3 = new Scanner(System.in);
-//@		double valueToConvert = in3.nextDouble();
-//@		
-//@		KonverterType konv = new VolumeConverter();
-//@		double convertedValue = konv.convert(valueToConvert, sourceTypeStr, destTypeStr);
-//@		this.printResult(convertedValue, sourceTypeStr, destTypeStr);
-//@		
-//@	}
+	private void showVolumeMenu() throws NotSupportedException {
+		String menuSource = "######################################\n"
+				+ "# please provide source type\n"
+				+ "# 1) m^2\n"
+				+ "# 2) cm^2\n"
+				+ "######################################\n";
+		System.out.println(menuSource);
+		
+		Scanner in = new Scanner(System.in);
+		int sourceType = in.nextInt();
+		String sourceTypeStr;
+		switch (sourceType) {
+		case 1:
+			sourceTypeStr = "m2";
+			break;
+		case 2:
+			sourceTypeStr = "cm2";
+			break;
+		default:
+			sourceTypeStr = "not found";
+			break;
+		}
+		System.out.println("Chosen source type: " + sourceTypeStr);
+		
+		String menuDest = "######################################\n"
+				+ "# please provide output type\n"
+				+ "# 1) m^2\n"
+				+ "# 2) cm^2\n"
+				+ "######################################\n";
+		System.out.println(menuDest);
+		
+		Scanner in2 = new Scanner(System.in);
+		int destType = in2.nextInt();
+		String destTypeStr;
+		switch (destType) {
+		case 1:
+			destTypeStr = "m2";
+			break;
+		case 2:
+			destTypeStr = "cm2";
+			break;
+		
+		default:
+			destTypeStr = "not found";
+			break;
+		}
+		System.out.println("Chosen destination type: " + destTypeStr);
+		
+		String menuValue = "######################################\n"
+				+ "# please provide value to convert (e.g. 100,5) \n"
+				+ "# ?\n"
+				+ "######################################\n";
+		System.out.println(menuValue);
+		
+		Scanner in3 = new Scanner(System.in);
+		double valueToConvert = in3.nextDouble();
+		
+		KonverterTypePlugin konv = new VolumeConverter();
+		double convertedValue = konv.convert(valueToConvert, sourceTypeStr, destTypeStr);
+		this.printResult(convertedValue, sourceTypeStr, destTypeStr);
+		
+	}
 	//#endif
 	
 	//#if Mass
-//@	private void showMassMenu() throws NotSupportedException {
-//@		KonverterType konv = new MassConverter();
-//@		String menuSource = generateAvailableConversionTypesMenuLines(konv, true);
-//@		System.out.println(menuSource);
-//@		
-//@		Scanner in = new Scanner(System.in);
-//@		int sourceType = in.nextInt();
-//@		String sourceTypeStr;
-//@		switch (sourceType) { //TODO Refactor more generic
-//@		case 1:
-//@			sourceTypeStr = MassConverter.MassType.g.name();;
-//@			break;
-//@		case 2:
-//@			sourceTypeStr = MassConverter.MassType.kg.name();;
-//@			break;
-//@		default:
-//@			sourceTypeStr = "not found";
-//@			break;
-//@		}
-//@		System.out.println("Chosen source type: " + sourceTypeStr);
-//@		
-//@		String menuDest = generateAvailableConversionTypesMenuLines(konv, false);
-//@		System.out.println(menuDest);
-//@		
-//@		Scanner in2 = new Scanner(System.in);
-//@		int destType = in2.nextInt();
-//@		String destTypeStr;
-//@		switch (destType) {//TODO Refactor more generic
-//@		case 1:
-//@			destTypeStr = MassConverter.MassType.g.name();
-//@			break;
-//@		case 2:
-//@			destTypeStr = MassConverter.MassType.kg.name();
-//@			break;
-//@		
-//@		default:
-//@			destTypeStr = "not found";
-//@			break;
-//@		}
-//@		System.out.println("Chosen destination type: " + destTypeStr);
-//@		
-//@		String menuValue = "######################################\n"
-//@				+ "# please provide value to convert (e.g. 100,5) \n"
-//@				+ "# ?\n"
-//@				+ "######################################\n";
-//@		System.out.println(menuValue);
-//@		
-//@		Scanner in3 = new Scanner(System.in);
-//@		double valueToConvert = in3.nextDouble();
-//@		
-//@		
-//@		double convertedValue = konv.convert(valueToConvert, sourceTypeStr, destTypeStr);
-//@		this.printResult(convertedValue, sourceTypeStr, destTypeStr);
-//@		in.close();
-//@		in2.close();
-//@		in3.close();
-//@				
-//@	}
+	private void showMassMenu() throws NotSupportedException {
+		KonverterTypePlugin konv = new MassConverter();
+		String menuSource = generateAvailableConversionTypesMenuLines(konv, true);
+		System.out.println(menuSource);
+		
+		Scanner in = new Scanner(System.in);
+		int sourceType = in.nextInt();
+		String sourceTypeStr;
+		switch (sourceType) { //TODO Refactor more generic
+		case 1:
+			sourceTypeStr = MassConverter.MassType.g.name();;
+			break;
+		case 2:
+			sourceTypeStr = MassConverter.MassType.kg.name();;
+			break;
+		default:
+			sourceTypeStr = "not found";
+			break;
+		}
+		System.out.println("Chosen source type: " + sourceTypeStr);
+		
+		String menuDest = generateAvailableConversionTypesMenuLines(konv, false);
+		System.out.println(menuDest);
+		
+		Scanner in2 = new Scanner(System.in);
+		int destType = in2.nextInt();
+		String destTypeStr;
+		switch (destType) {//TODO Refactor more generic
+		case 1:
+			destTypeStr = MassConverter.MassType.g.name();
+			break;
+		case 2:
+			destTypeStr = MassConverter.MassType.kg.name();
+			break;
+		
+		default:
+			destTypeStr = "not found";
+			break;
+		}
+		System.out.println("Chosen destination type: " + destTypeStr);
+		
+		String menuValue = "######################################\n"
+				+ "# please provide value to convert (e.g. 100,5) \n"
+				+ "# ?\n"
+				+ "######################################\n";
+		System.out.println(menuValue);
+		
+		Scanner in3 = new Scanner(System.in);
+		double valueToConvert = in3.nextDouble();
+		
+		
+		double convertedValue = konv.convert(valueToConvert, sourceTypeStr, destTypeStr);
+		this.printResult(convertedValue, sourceTypeStr, destTypeStr);
+		in.close();
+		in2.close();
+		in3.close();
+				
+	}
 	//#endif
 	
 	public void showLengthMenu() throws NotSupportedException{
-		KonverterType lengthKonv = new LengthKonverter();
+		KonverterTypePlugin lengthKonv = new LengthKonverter();
 		String menuSource = "######################################\n"
 				+ "# please provide source type\n"
 				+ "# 1) m\n"
@@ -324,7 +325,7 @@ public class ConsoleUi {
 		System.out.println(menuDest);
 	}
 	
-	private String generateAvailableConversionTypesMenuLines(KonverterType konverterType, boolean isSourceType) {
+	private String generateAvailableConversionTypesMenuLines(KonverterTypePlugin konverterType, boolean isSourceType) {
 		String typeTypeStr;
 		if (isSourceType) {
 			typeTypeStr = "source";
@@ -348,4 +349,3 @@ public class ConsoleUi {
 		return menu;	
 	}
 }
-//#endif
