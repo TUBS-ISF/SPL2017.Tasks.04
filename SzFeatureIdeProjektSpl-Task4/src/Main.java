@@ -35,11 +35,11 @@ public class Main {
 		
 		//============= Plugin activation =============
 		//#if Console 
-//@		System.out.println("Console Plugin Active");
+		System.out.println("Console Plugin Active");
 		//#endif
 		
 		//#if Graphical 
-		System.out.println("Graphical Plugin Active");
+//@		System.out.println("Graphical Plugin Active");
 		//#endif
 		
 		//#if OutputSingle 
@@ -87,9 +87,9 @@ public class Main {
 		//#endif
 		
 		//#if Speed 
-//@		konverterList.add(new SpeedConverter());
-//@		konverterMenuList.add(new SpeedConverterMenu());
-//@		System.out.println("Speed Plugin Active");
+		konverterList.add(new SpeedConverter());
+		konverterMenuList.add(new SpeedConverterMenu());
+		System.out.println("Speed Plugin Active");
 		//#endif
 		//============= Plugin activation /> =============
 		
@@ -97,8 +97,8 @@ public class Main {
 		//#if Console 
 		//#if LetUserChoose
 		//#if OutputSingle
-//@		ConsoleUi consoleUi = new ConsoleUi(konverterList, konverterMenuList);
-//@		consoleUi.printMenu();
+		ConsoleUi consoleUi = new ConsoleUi(konverterList, konverterMenuList);
+		consoleUi.printMenu();
 		//#endif
 		//#endif
 		//#endif
@@ -106,8 +106,9 @@ public class Main {
 
 		
 		//#if Graphical
-		GraphicalUi graphicalUi = new GraphicalUi();
-		//throw new NotSupportedException();
+//@		//Currently only one Converter Plugin is used in the graphical UI 
+//@		GraphicalUi graphicalUi = new GraphicalUi(konverterList.get(0));
+//@		//throw new NotSupportedException();
 		//#endif
 
 		System.out.println("The End");

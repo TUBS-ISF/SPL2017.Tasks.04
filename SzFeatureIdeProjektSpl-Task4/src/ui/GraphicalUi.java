@@ -17,11 +17,13 @@ import converter.TemperatureConverter;
 
 public class GraphicalUi extends JFrame{
 	private static final long serialVersionUID = 1520725678693523956L;
-	private TemperatureConverter temperatureConverter = new TemperatureConverter();
+	private KonverterTypePlugin converterPlugin;
+	
 
-	public GraphicalUi() {
+	public GraphicalUi(KonverterTypePlugin converterPlugin) {
 		super();
 		this.setTitle("Converter");
+		this.converterPlugin = converterPlugin;
 		init(false);
 		
 	}
@@ -32,12 +34,14 @@ public class GraphicalUi extends JFrame{
 		
 		JTextField textFieldInput = createTextFieldInput();
 		JTextField textFieldOutput = createTextFieldOutput();
+		JComboBox<String> comboBoxInputType = createComboBoxInputType();
+		JComboBox<String> comboBoxOutputType = createComboBoxOutputType();
 		this.add(textFieldInput);
-		this.add(createComboBoxInputType());
+		this.add(comboBoxInputType);
 		this.add(textFieldOutput);
-		this.add(createComboBoxOutputType());
+		this.add(comboBoxOutputType);
 		
-		this.add(createButtonCalculate(textFieldInput, textFieldOutput));
+		this.add(createButtonCalculate(textFieldInput, textFieldOutput, comboBoxInputType, comboBoxOutputType));
 		this.setVisible(true);
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		
@@ -57,17 +61,23 @@ public class GraphicalUi extends JFrame{
 		return txt;
 	}
 	
-	private JComboBox<?> createComboBoxInputType() {
-		ComboBoxTypes cbt = new ComboBoxTypes(temperatureConverter.getTypeNames());
+	private JComboBox<String> createComboBoxInputType() {
+		ComboBoxTypes cbt = new ComboBoxTypes(converterPlugin.getTypeNames());
+		
 		return cbt.get();
 	}
 	
-	private JComboBox<?> createComboBoxOutputType() {
-		ComboBoxTypes cbt = new ComboBoxTypes(temperatureConverter.getTypeNames());
+	private JComboBox<String> createComboBoxOutputType() {
+		ComboBoxTypes cbt = new ComboBoxTypes(converterPlugin.getTypeNames());
 		return cbt.get();
 	}
 	
-	private JButton createButtonCalculate(JTextField textFieldInput, JTextField textFieldOutput) {
+	private JButton createButtonCalculate(
+			JTextField textFieldInput, 
+			JTextField textFieldOutput,
+			JComboBox<String> comboBoxInputType,
+			JComboBox<String> comboBoxOutputType) 
+	{
 		JButton b = new JButton();
 		b.setText("Calculate");
 		//b.setBounds(40, 40, 100, 30);
@@ -76,9 +86,9 @@ public class GraphicalUi extends JFrame{
 			public void actionPerformed(ActionEvent e) {
 				double operand = Double.valueOf(textFieldInput.getText());
 				try {
-					double result = temperatureConverter.convert(operand, 
-							TemperatureConverter.TemperatureType.Celsius.name(), 
-							TemperatureConverter.TemperatureType.Kelvin.name());
+					double result = converterPlugin.convert(operand, 
+							comboBoxInputType.getSelectedItem().toString(), 
+							comboBoxOutputType.getSelectedItem().toString());
 					
 					textFieldOutput.setText(String.valueOf(result));
 				} catch (NotSupportedException e1) {
