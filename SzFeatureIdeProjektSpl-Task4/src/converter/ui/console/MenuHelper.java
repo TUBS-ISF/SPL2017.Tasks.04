@@ -1,4 +1,4 @@
-package converter.ui;
+package converter.ui.console;
 
 import converter.KonverterTypePlugin;
 

@@ -1,35 +1,38 @@
-package converter.ui;
+package converter.ui.console;
 
 import java.util.Scanner;
 
 import converter.KonverterTypePlugin;
-import converter.MassConverter;
+import converter.LengthKonverter;
 import converter.NotSupportedException;
 
-public class MassKonverterMenu implements ConsoleUiPlugin {
+public class LengthKonverterMenu implements ConsoleUiPlugin {
 	private MenuHelper menuHelper;
 	
-	@Override
-	public void setMenuHelper(MenuHelper menuHelper) {
-		this.menuHelper = menuHelper;
-		
+	public LengthKonverterMenu() {
+		//this.menuHelper = menuHelper;
 	}
+	
 
 	@Override
 	public void showMenu() throws NotSupportedException {
-		KonverterTypePlugin konv = new MassConverter();
-		String menuSource = menuHelper.generateAvailableConversionTypesMenuLines(konv, true);
+		KonverterTypePlugin lengthKonv = new LengthKonverter();
+		String menuSource = "######################################\n"
+				+ "# please provide source type\n"
+				+ "# 1) m\n"
+				+ "# 2) km\n"
+				+ "######################################\n";
 		System.out.println(menuSource);
 		
 		Scanner in = new Scanner(System.in);
 		int sourceType = in.nextInt();
 		String sourceTypeStr;
-		switch (sourceType) { //TODO Refactor more generic
+		switch (sourceType) {
 		case 1:
-			sourceTypeStr = MassConverter.MassType.g.name();;
+			sourceTypeStr = LengthKonverter.LengthType.m.name();
 			break;
 		case 2:
-			sourceTypeStr = MassConverter.MassType.kg.name();;
+			sourceTypeStr = LengthKonverter.LengthType.km.name();
 			break;
 		default:
 			sourceTypeStr = "not found";
@@ -37,20 +40,26 @@ public class MassKonverterMenu implements ConsoleUiPlugin {
 		}
 		System.out.println("Chosen source type: " + sourceTypeStr);
 		
-		String menuDest = menuHelper.generateAvailableConversionTypesMenuLines(konv, false);
+		String menuDest = menuHelper.generateAvailableConversionTypesMenuLines(lengthKonv, false);
 		System.out.println(menuDest);
 		
 		Scanner in2 = new Scanner(System.in);
 		int destType = in2.nextInt();
 		String destTypeStr;
-		switch (destType) {//TODO Refactor more generic
+		switch (destType) {
 		case 1:
-			destTypeStr = MassConverter.MassType.g.name();
+			destTypeStr = "m";
 			break;
 		case 2:
-			destTypeStr = MassConverter.MassType.kg.name();
+			destTypeStr = "km";
 			break;
-		
+		case 3:
+			destTypeStr = "mm";
+			break;
+		case 4:
+			destTypeStr = "cm";
+			break;
+
 		default:
 			destTypeStr = "not found";
 			break;
@@ -58,7 +67,7 @@ public class MassKonverterMenu implements ConsoleUiPlugin {
 		System.out.println("Chosen destination type: " + destTypeStr);
 		
 		String menuValue = "######################################\n"
-				+ "# please provide value to convert (e.g. 100,5) \n"
+				+ "# please provide value to convert (e.g. 100,5)\n"
 				+ "# ?\n"
 				+ "######################################\n";
 		System.out.println(menuValue);
@@ -67,17 +76,26 @@ public class MassKonverterMenu implements ConsoleUiPlugin {
 		double valueToConvert = in3.nextDouble();
 		
 		
-		double convertedValue = konv.convert(valueToConvert, sourceTypeStr, destTypeStr);
+		double convertedValue = lengthKonv.convert(valueToConvert, sourceTypeStr, destTypeStr);
 		menuHelper.printResult(convertedValue, sourceTypeStr, destTypeStr);
-		in.close();
+		//in1.close();
 		in2.close();
 		in3.close();
 		
 	}
 
+
+	@Override
+	public void setMenuHelper(MenuHelper menuHelper) {
+		this.menuHelper = menuHelper;
+	}
+
+
 	@Override
 	public String getName() {
-		return "Mass";
+		return "Length";
 	}
+	
+	
 
 }

@@ -1,4 +1,4 @@
-package plugins.ui;
+package ui;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -7,9 +7,9 @@ import java.util.Map;
 import java.util.Scanner;
 
 import converter.KonverterTypePlugin;
-import converter.ui.ConsoleUiPlugin;
-import converter.ui.MenuHelper;
 import converter.NotSupportedException;
+import converter.ui.console.ConsoleUiPlugin;
+import converter.ui.console.MenuHelper;
 
 public class ConsoleUi implements MenuHelper {
 	boolean featureParseType = false; //TODO - default is let user choose

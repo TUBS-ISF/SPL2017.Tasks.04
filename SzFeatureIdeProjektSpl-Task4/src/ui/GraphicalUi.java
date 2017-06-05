@@ -1,4 +1,4 @@
-package plugins.ui;
+package ui;
 
 import javax.swing.JFrame;
 

@@ -1,12 +1,12 @@
-package converter.ui;
+package converter.ui.console;
 
 import java.util.Scanner;
 
 import converter.KonverterTypePlugin;
+import converter.MassConverter;
 import converter.NotSupportedException;
-import converter.VolumeConverter;
 
-public class VolumeKonverterMenu implements ConsoleUiPlugin {
+public class MassKonverterMenu implements ConsoleUiPlugin {
 	private MenuHelper menuHelper;
 	
 	@Override
@@ -17,22 +17,19 @@ public class VolumeKonverterMenu implements ConsoleUiPlugin {
 
 	@Override
 	public void showMenu() throws NotSupportedException {
-		String menuSource = "######################################\n"
-				+ "# please provide source type\n"
-				+ "# 1) m^2\n"
-				+ "# 2) cm^2\n"
-				+ "######################################\n";
+		KonverterTypePlugin konv = new MassConverter();
+		String menuSource = menuHelper.generateAvailableConversionTypesMenuLines(konv, true);
 		System.out.println(menuSource);
 		
 		Scanner in = new Scanner(System.in);
 		int sourceType = in.nextInt();
 		String sourceTypeStr;
-		switch (sourceType) {
+		switch (sourceType) { //TODO Refactor more generic
 		case 1:
-			sourceTypeStr = "m2";
+			sourceTypeStr = MassConverter.MassType.g.name();;
 			break;
 		case 2:
-			sourceTypeStr = "cm2";
+			sourceTypeStr = MassConverter.MassType.kg.name();;
 			break;
 		default:
 			sourceTypeStr = "not found";
@@ -40,22 +37,18 @@ public class VolumeKonverterMenu implements ConsoleUiPlugin {
 		}
 		System.out.println("Chosen source type: " + sourceTypeStr);
 		
-		String menuDest = "######################################\n"
-				+ "# please provide output type\n"
-				+ "# 1) m^2\n"
-				+ "# 2) cm^2\n"
-				+ "######################################\n";
+		String menuDest = menuHelper.generateAvailableConversionTypesMenuLines(konv, false);
 		System.out.println(menuDest);
 		
 		Scanner in2 = new Scanner(System.in);
 		int destType = in2.nextInt();
 		String destTypeStr;
-		switch (destType) {
+		switch (destType) {//TODO Refactor more generic
 		case 1:
-			destTypeStr = "m2";
+			destTypeStr = MassConverter.MassType.g.name();
 			break;
 		case 2:
-			destTypeStr = "cm2";
+			destTypeStr = MassConverter.MassType.kg.name();
 			break;
 		
 		default:
@@ -73,16 +66,18 @@ public class VolumeKonverterMenu implements ConsoleUiPlugin {
 		Scanner in3 = new Scanner(System.in);
 		double valueToConvert = in3.nextDouble();
 		
-		KonverterTypePlugin konv = new VolumeConverter();
+		
 		double convertedValue = konv.convert(valueToConvert, sourceTypeStr, destTypeStr);
 		menuHelper.printResult(convertedValue, sourceTypeStr, destTypeStr);
-		
+		in.close();
+		in2.close();
+		in3.close();
 		
 	}
 
 	@Override
 	public String getName() {
-		return "Volume";
+		return "Mass";
 	}
 
 }

@@ -8,13 +8,12 @@ import converter.MassConverter;
 import converter.NotSupportedException;
 import converter.TemperatureConverter;
 import converter.VolumeConverter;
-import converter.ui.ConsoleUiPlugin;
-import converter.ui.LengthKonverterMenu;
-import converter.ui.MassKonverterMenu;
-import converter.ui.TemperatureKonverterMenu;
-import converter.ui.VolumeKonverterMenu;
-import plugins.Plugin;
-import plugins.ui.ConsoleUi;
+import converter.ui.console.ConsoleUiPlugin;
+import converter.ui.console.LengthKonverterMenu;
+import converter.ui.console.MassKonverterMenu;
+import converter.ui.console.TemperatureKonverterMenu;
+import converter.ui.console.VolumeKonverterMenu;
+import ui.ConsoleUi;
 
 public class Main {
 	
@@ -27,8 +26,6 @@ public class Main {
 
 	public static void main(String[] args) throws NotSupportedException {
 		System.out.println("Start...");
-//		Plugin plugin;
-//		
 	
 		List<KonverterTypePlugin> konverterList = new ArrayList<>();
 		List<ConsoleUiPlugin> konverterMenuList = new ArrayList<>();
@@ -59,7 +56,6 @@ public class Main {
 		//#endif
 		
 		//#if ParseType 
-//@		parseType = true;
 //@		System.out.println("ParseType Plugin Active");
 		//#endif
 		
@@ -70,21 +66,21 @@ public class Main {
 		//#endif
 		
 		//#if Volume 
-//@		konverterList.add(new VolumeConverter());
-//@		konverterMenuList.add(new VolumeKonverterMenu());
-//@		System.out.println("Volume Plugin Active");
+		konverterList.add(new VolumeConverter());
+		konverterMenuList.add(new VolumeKonverterMenu());
+		System.out.println("Volume Plugin Active");
 		//#endif
 		
 		//#if Mass 
-//@		konverterList.add(new MassConverter());
-//@		konverterMenuList.add(new MassKonverterMenu());
-//@		System.out.println("Mass Plugin Active");
+		konverterList.add(new MassConverter());
+		konverterMenuList.add(new MassKonverterMenu());
+		System.out.println("Mass Plugin Active");
 		//#endif
 		
 		//#if Temperature 
-//@		konverterList.add(new TemperatureConverter());
-//@		konverterMenuList.add(new TemperatureKonverterMenu());
-//@		System.out.println("Temperature Plugin Active");
+		konverterList.add(new TemperatureConverter());
+		konverterMenuList.add(new TemperatureKonverterMenu());
+		System.out.println("Temperature Plugin Active");
 		//#endif
 		//============= Plugin activation /> =============
 		
