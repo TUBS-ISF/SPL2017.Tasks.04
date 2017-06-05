@@ -6,11 +6,13 @@ import converter.KonverterTypePlugin;
 import converter.LengthKonverter;
 import converter.MassConverter;
 import converter.NotSupportedException;
+import converter.SpeedConverter;
 import converter.TemperatureConverter;
 import converter.VolumeConverter;
 import converter.ui.console.ConsoleUiPlugin;
 import converter.ui.console.LengthKonverterMenu;
 import converter.ui.console.MassKonverterMenu;
+import converter.ui.console.SpeedConverterMenu;
 import converter.ui.console.TemperatureKonverterMenu;
 import converter.ui.console.VolumeKonverterMenu;
 import ui.ConsoleUi;
@@ -81,6 +83,12 @@ public class Main {
 		konverterList.add(new TemperatureConverter());
 		konverterMenuList.add(new TemperatureKonverterMenu());
 		System.out.println("Temperature Plugin Active");
+		//#endif
+		
+		//#if Speed 
+		konverterList.add(new SpeedConverter());
+		konverterMenuList.add(new SpeedConverterMenu());
+		System.out.println("Speed Plugin Active");
 		//#endif
 		//============= Plugin activation /> =============
 		

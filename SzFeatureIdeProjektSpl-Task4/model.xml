@@ -31,7 +31,7 @@
 								e.g. m², square feet
 							</description>
 						</feature>
-						<feature abstract="true" name="Speed">
+						<feature name="Speed">
 							<description>
 								mph, km/h, c
 							</description>
