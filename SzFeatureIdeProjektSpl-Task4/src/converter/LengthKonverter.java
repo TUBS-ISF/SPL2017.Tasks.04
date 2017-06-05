@@ -64,5 +64,11 @@ public class LengthKonverter implements KonverterTypePlugin {
 		return names;
 	}
 
+
+	@Override
+	public String getName() {
+		return "Length";
+	}
+
 }
 

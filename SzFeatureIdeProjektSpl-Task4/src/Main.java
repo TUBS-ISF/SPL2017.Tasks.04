@@ -1,6 +1,18 @@
 import java.lang.System;
+import java.util.ArrayList;
+import java.util.List;
 
+import converter.KonverterTypePlugin;
+import converter.LengthKonverter;
+import converter.MassConverter;
 import converter.NotSupportedException;
+import converter.TemperatureConverter;
+import converter.VolumeConverter;
+import converter.ui.ConsoleUiPlugin;
+import converter.ui.LengthKonverterMenu;
+import converter.ui.MassKonverterMenu;
+import converter.ui.TemperatureKonverterMenu;
+import converter.ui.VolumeKonverterMenu;
 import plugins.Plugin;
 import plugins.ui.ConsoleUi;
 
@@ -15,48 +27,34 @@ public class Main {
 
 	public static void main(String[] args) throws NotSupportedException {
 		System.out.println("Start...");
-		Plugin plugin;
-		
-		boolean uiTypeConsole = false;
-		boolean uiTypeGraphical = false;
-		boolean ioSingleValueOutputSingle = false;
-		boolean ioSingleValueOutputMultiple = false;
-		boolean ioMultipleValues = false;
-		boolean letUserChoose = false;
-		boolean parseType = false;
-		boolean converterLength = false;
-		boolean converterVolume = false;
-		boolean converterMass = false;
+//		Plugin plugin;
+//		
+	
+		List<KonverterTypePlugin> konverterList = new ArrayList<>();
+		List<ConsoleUiPlugin> konverterMenuList = new ArrayList<>();
 		
 		//============= Plugin activation =============
 		//#if Console 
-		uiTypeConsole = true;
 		System.out.println("Console Plugin Active");
-		plugin = new plugins.ui.ConsoleUi();
 		//#endif
 		
 		//#if Graphical 
-//@		uiTypeGraphical = true;
 //@		System.out.println("Graphical Plugin Active");
 		//#endif
 		
 		//#if OutputSingle 
-		ioSingleValueOutputSingle = true;
 		System.out.println("OutputSingle Plugin Active");
 		//#endif
 		
 		//#if OutputMultiple 
-//@		ioSingleValueOutputMultiple = true;
 //@		System.out.println("OutputMultiple Plugin Active");
 		//#endif
 		
 		//#if MultipleValues 
-//@		ioMultipleValues = true;
 //@		System.out.println("MultipleValues Plugin Active");
 		//#endif
 		
 		//#if LetUserChoose 
-		letUserChoose = true;
 		System.out.println("LetUserChoose Plugin Active");
 		//#endif
 		
@@ -66,18 +64,27 @@ public class Main {
 		//#endif
 		
 		//#if Length 
-		converterLength = true;
+		konverterList.add(new LengthKonverter());
+		konverterMenuList.add(new LengthKonverterMenu());
 		System.out.println("Length Plugin Active");
 		//#endif
 		
 		//#if Volume 
-		converterVolume = true;
-		System.out.println("Volume Plugin Active");
+//@		konverterList.add(new VolumeConverter());
+//@		konverterMenuList.add(new VolumeKonverterMenu());
+//@		System.out.println("Volume Plugin Active");
 		//#endif
 		
 		//#if Mass 
-		converterMass = true;
-		System.out.println("Mass Plugin Active");
+//@		konverterList.add(new MassConverter());
+//@		konverterMenuList.add(new MassKonverterMenu());
+//@		System.out.println("Mass Plugin Active");
+		//#endif
+		
+		//#if Temperature 
+//@		konverterList.add(new TemperatureConverter());
+//@		konverterMenuList.add(new TemperatureKonverterMenu());
+//@		System.out.println("Temperature Plugin Active");
 		//#endif
 		//============= Plugin activation /> =============
 		
@@ -85,38 +92,13 @@ public class Main {
 		//#if Console 
 		//#if LetUserChoose
 		//#if OutputSingle
-		ConsoleUi ui = new ConsoleUi();
-		ui.printMenu();
+		ConsoleUi consoleUi = new ConsoleUi(konverterList, konverterMenuList);
+		consoleUi.printMenu();
 		//#endif
 		//#endif
 		//#endif
 			
-		//#if Console 
-		//#if LetUserChoose
-		//#if OutputSingle
-		//#if ParseType 
-//@		ConsoleUi ui = new ConsoleUi(parseType);
-//@		ui.printMenu();
-		//#endif
-		//#endif
-		//#endif
-		//#endif
-		
-		//#if Console 
-		//#if LetUserChoose
-		//#if OutputMultiple 
-//@		throw new NotSupportedException();
-		//#endif
-		//#endif
-		//#endif
-		
-		//#if Console 
-		//#if LetUserChoose
-		//#if MultipleValues 
-//@		throw new NotSupportedException();
-		//#endif
-		//#endif
-		//#endif
+
 		
 		//#if Graphical 
 //@		throw new NotSupportedException();

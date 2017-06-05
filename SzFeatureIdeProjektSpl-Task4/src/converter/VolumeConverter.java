@@ -39,4 +39,9 @@ public class VolumeConverter implements KonverterTypePlugin {
 		}
 		return names;
 	}
+	
+	@Override
+	public String getName() {
+		return "Volume";
+	}
 }

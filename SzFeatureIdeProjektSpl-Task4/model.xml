@@ -36,7 +36,7 @@
 								mph, km/h, c
 							</description>
 						</feature>
-						<feature abstract="true" name="Temperature">
+						<feature name="Temperature">
 							<description>
 								Celsius, Fahrenheit, Kelvin
 							</description>

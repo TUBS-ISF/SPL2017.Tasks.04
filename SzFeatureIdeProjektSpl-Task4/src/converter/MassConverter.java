@@ -40,6 +40,10 @@ public class MassConverter implements KonverterTypePlugin {
 		return names;
 	}
 	
+	@Override
+	public String getName() {
+		return "Mass";
+	}
 	
 
 }
