@@ -1,0 +1,2 @@
+1. Diamant-Schreibweise von Generics war nicht möglich (Statt new ArrayList<>, musste new ArrayList<Typ> geschrieben werden)
+2. Keine Packages möglich?
