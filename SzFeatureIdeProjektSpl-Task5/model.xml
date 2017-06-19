@@ -46,7 +46,7 @@
 								e.g. Joule, Ws, kWh...
 							</description>
 						</feature>
-						<feature abstract="true" name="Power">
+						<feature name="Power">
 							<description>
 								e.g. Watt &amp; PS
 							</description>
