@@ -9,7 +9,7 @@ public class Main {
 		
 		System.out.println("Temperature Feature Active");
 		activatedConverterFeatures.konverterList.add(new TemperatureConverter());
-		activatedConverterFeatures.konverterMenuList.add(new TemperatureKonverterMenu());
+		activatedConverterFeatures.konverterMenuList.add(new TemperatureConverterMenu());
 	}
 
 }

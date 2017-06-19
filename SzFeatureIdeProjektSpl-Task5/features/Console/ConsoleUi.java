@@ -6,21 +6,21 @@ import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 
-//import converter.KonverterTypePlugin;
+//import converter.ConverterTypePlugin;
 //import converter.NotSupportedException;
 //import converter.ui.console.ConsoleUiPlugin;
 //import converter.ui.console.MenuHelper;
 
 public class ConsoleUi implements MenuHelper {
 	boolean featureParseType = false; //TODO - default is let user choose
-	Map<Integer, ConsoleUiPlugin> chosenKonverterFeature;
+	Map<Integer, ConsoleUiPlugin> chosenConverterFeature;
 
 	private List<String> typeMenuEntries;
 	
-//	private List<KonverterTypePlugin> konverterList; 
+//	private List<ConverterTypePlugin> konverterList; 
 //	private List<ConsoleUiPlugin> konverterMenuList;
 	
-	public ConsoleUi(List<KonverterTypePlugin> konverterList, List<ConsoleUiPlugin> konverterMenuList){
+	public ConsoleUi(List<ConverterTypePlugin> konverterList, List<ConsoleUiPlugin> konverterMenuList){
 		init(false, konverterList, konverterMenuList);
 	}
 	
@@ -32,26 +32,26 @@ public class ConsoleUi implements MenuHelper {
 	
 	
 	private void init(boolean parseType, 
-			List<KonverterTypePlugin> konverterList, 
+			List<ConverterTypePlugin> konverterList, 
 			List<ConsoleUiPlugin> konverterMenuList) 
 	{
 		
 //		this.konverterList = konverterList;
 //		this.konverterMenuList = konverterMenuList;
 		
-		chosenKonverterFeature = new HashMap<Integer, ConsoleUiPlugin>();
+		chosenConverterFeature = new HashMap<Integer, ConsoleUiPlugin>();
 		typeMenuEntries = new ArrayList<String>();
 		
 		int counter = 1;
 		for (ConsoleUiPlugin consoleUiPlugin : konverterMenuList) {
 			String entry = "# " +counter+ ") " + consoleUiPlugin.getName();
-			chosenKonverterFeature.put(counter, consoleUiPlugin);
+			chosenConverterFeature.put(counter, consoleUiPlugin);
 			typeMenuEntries.add(entry);
 			consoleUiPlugin.setMenuHelper(this);
 			counter += 1;
 		}
 		
-//		for (KonverterTypePlugin konverterPlugin : konverterList) {
+//		for (ConverterTypePlugin konverterPlugin : konverterList) {
 //			
 //		}
 				
@@ -81,10 +81,10 @@ public class ConsoleUi implements MenuHelper {
 	}
 	
 	public void showConversionTypeMenu(int chosenFeature) throws NotSupportedException {
-		if (chosenKonverterFeature.get(chosenFeature) == null) {
+		if (chosenConverterFeature.get(chosenFeature) == null) {
 			System.err.println("Not available!");
 		}
-		ConsoleUiPlugin uiPlugin = chosenKonverterFeature.get(chosenFeature);
+		ConsoleUiPlugin uiPlugin = chosenConverterFeature.get(chosenFeature);
 		uiPlugin.showMenu();
 	}
 	
@@ -98,7 +98,7 @@ public class ConsoleUi implements MenuHelper {
 	}
 	
 	@Override
-	public String generateAvailableConversionTypesMenuLines(KonverterTypePlugin konverterType, boolean isSourceType) {
+	public String generateAvailableConversionTypesMenuLines(ConverterTypePlugin konverterType, boolean isSourceType) {
 		String typeTypeStr;
 		if (isSourceType) {
 			typeTypeStr = "source";

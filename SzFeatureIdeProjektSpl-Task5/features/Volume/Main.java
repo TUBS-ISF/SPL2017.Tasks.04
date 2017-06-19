@@ -9,7 +9,7 @@ public class Main {
 		
 		System.out.println("Volume Feature Active");
 		activatedConverterFeatures.konverterList.add(new VolumeConverter());
-		activatedConverterFeatures.konverterMenuList.add(new VolumeKonverterMenu());
+		activatedConverterFeatures.konverterMenuList.add(new VolumeConverterMenu());
 	}
 
 }

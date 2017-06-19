@@ -3,8 +3,8 @@
 		<properties/>
 		<struct>
 			<and abstract="true" mandatory="true" name="SzFeatureIdeProjektSplTask5">
-				<and abstract="true" mandatory="true" name="Einheiten-Konverter">
-					<and mandatory="true" name="KonverterType">
+				<and abstract="true" mandatory="true" name="Einheiten-Converter">
+					<and mandatory="true" name="ConverterType">
 						<description>
 							The type of conversion
 						</description>

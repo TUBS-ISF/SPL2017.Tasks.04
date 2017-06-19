@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.List;
 
-public class LengthKonverter implements KonverterTypePlugin {
+public class LengthConverter implements ConverterTypePlugin {
 	
 	public enum LengthType {
 	    m, km, mm, cm 

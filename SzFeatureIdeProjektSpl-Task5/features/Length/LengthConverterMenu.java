@@ -1,20 +1,20 @@
 import java.util.Scanner;
 
-public class VolumeKonverterMenu implements ConsoleUiPlugin {
+public class LengthConverterMenu implements ConsoleUiPlugin {
 	private MenuHelper menuHelper;
 	
-	@Override
-	public void setMenuHelper(MenuHelper menuHelper) {
-		this.menuHelper = menuHelper;
-		
+	public LengthConverterMenu() {
+		//this.menuHelper = menuHelper;
 	}
+	
 
 	@Override
 	public void showMenu() throws NotSupportedException {
+		ConverterTypePlugin lengthKonv = new LengthConverter();
 		String menuSource = "######################################\n"
 				+ "# please provide source type\n"
-				+ "# 1) m^2\n"
-				+ "# 2) cm^2\n"
+				+ "# 1) m\n"
+				+ "# 2) km\n"
 				+ "######################################\n";
 		System.out.println(menuSource);
 		
@@ -23,10 +23,10 @@ public class VolumeKonverterMenu implements ConsoleUiPlugin {
 		String sourceTypeStr;
 		switch (sourceType) {
 		case 1:
-			sourceTypeStr = "m2";
+			sourceTypeStr = LengthConverter.LengthType.m.name();
 			break;
 		case 2:
-			sourceTypeStr = "cm2";
+			sourceTypeStr = LengthConverter.LengthType.km.name();
 			break;
 		default:
 			sourceTypeStr = "not found";
@@ -34,11 +34,7 @@ public class VolumeKonverterMenu implements ConsoleUiPlugin {
 		}
 		System.out.println("Chosen source type: " + sourceTypeStr);
 		
-		String menuDest = "######################################\n"
-				+ "# please provide output type\n"
-				+ "# 1) m^2\n"
-				+ "# 2) cm^2\n"
-				+ "######################################\n";
+		String menuDest = menuHelper.generateAvailableConversionTypesMenuLines(lengthKonv, false);
 		System.out.println(menuDest);
 		
 		Scanner in2 = new Scanner(System.in);
@@ -46,12 +42,18 @@ public class VolumeKonverterMenu implements ConsoleUiPlugin {
 		String destTypeStr;
 		switch (destType) {
 		case 1:
-			destTypeStr = "m2";
+			destTypeStr = "m";
 			break;
 		case 2:
-			destTypeStr = "cm2";
+			destTypeStr = "km";
 			break;
-		
+		case 3:
+			destTypeStr = "mm";
+			break;
+		case 4:
+			destTypeStr = "cm";
+			break;
+
 		default:
 			destTypeStr = "not found";
 			break;
@@ -59,7 +61,7 @@ public class VolumeKonverterMenu implements ConsoleUiPlugin {
 		System.out.println("Chosen destination type: " + destTypeStr);
 		
 		String menuValue = "######################################\n"
-				+ "# please provide value to convert (e.g. 100,5) \n"
+				+ "# please provide value to convert (e.g. 100,5)\n"
 				+ "# ?\n"
 				+ "######################################\n";
 		System.out.println(menuValue);
@@ -67,16 +69,27 @@ public class VolumeKonverterMenu implements ConsoleUiPlugin {
 		Scanner in3 = new Scanner(System.in);
 		double valueToConvert = in3.nextDouble();
 		
-		KonverterTypePlugin konv = new VolumeConverter();
-		double convertedValue = konv.convert(valueToConvert, sourceTypeStr, destTypeStr);
-		menuHelper.printResult(convertedValue, sourceTypeStr, destTypeStr);
 		
+		double convertedValue = lengthKonv.convert(valueToConvert, sourceTypeStr, destTypeStr);
+		menuHelper.printResult(convertedValue, sourceTypeStr, destTypeStr);
+		//in1.close();
+		in2.close();
+		in3.close();
 		
 	}
 
+
+	@Override
+	public void setMenuHelper(MenuHelper menuHelper) {
+		this.menuHelper = menuHelper;
+	}
+
+
 	@Override
 	public String getName() {
-		return "Volume";
+		return "Length";
 	}
+	
+	
 
 }

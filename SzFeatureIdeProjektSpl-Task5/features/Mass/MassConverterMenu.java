@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class MassKonverterMenu implements ConsoleUiPlugin {
+public class MassConverterMenu implements ConsoleUiPlugin {
 	private MenuHelper menuHelper;
 	
 	@Override
@@ -11,7 +11,7 @@ public class MassKonverterMenu implements ConsoleUiPlugin {
 
 	@Override
 	public void showMenu() throws NotSupportedException {
-		KonverterTypePlugin konv = new MassConverter();
+		ConverterTypePlugin konv = new MassConverter();
 		String menuSource = menuHelper.generateAvailableConversionTypesMenuLines(konv, true);
 		System.out.println(menuSource);
 		

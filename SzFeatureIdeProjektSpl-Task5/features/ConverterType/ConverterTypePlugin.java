@@ -1,6 +1,6 @@
 import java.util.List;
 
-public interface KonverterTypePlugin {
+public interface ConverterTypePlugin {
 	
 	public double convert(double val, String sourceType, String destinationType) throws NotSupportedException;
 	public List<String> getTypeNames();

@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.List;
 
-public class MassConverter implements KonverterTypePlugin {
+public class MassConverter implements ConverterTypePlugin {
 	
 	public enum MassType {
 	    g, kg

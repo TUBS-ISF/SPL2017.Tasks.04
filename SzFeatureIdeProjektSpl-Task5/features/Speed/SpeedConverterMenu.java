@@ -11,7 +11,7 @@ public class SpeedConverterMenu implements ConsoleUiPlugin {
 
 	@Override
 	public void showMenu() throws NotSupportedException {
-		KonverterTypePlugin konv = new SpeedConverter();
+		ConverterTypePlugin konv = new SpeedConverter();
 		String menuSource = menuHelper.generateAvailableConversionTypesMenuLines(konv, true);
 		System.out.println(menuSource);
 		

@@ -3,7 +3,7 @@
 import java.util.ArrayList;
 import java.util.List;
 
-public class VolumeConverter implements KonverterTypePlugin {
+public class VolumeConverter implements ConverterTypePlugin {
 	
 	public enum VolumeType {
 	    m2, cm2 

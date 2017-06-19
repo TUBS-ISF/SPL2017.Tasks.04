@@ -3,7 +3,7 @@
 import java.util.ArrayList;
 import java.util.List;
 
-public class TemperatureConverter implements KonverterTypePlugin {
+public class TemperatureConverter implements ConverterTypePlugin {
 	
 	public enum TemperatureType {
 	    Celsius, Fahrenheit, Kelvin

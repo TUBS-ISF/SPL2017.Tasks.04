@@ -2,7 +2,7 @@ import java.util.Scanner;
 
 
 
-public class TemperatureKonverterMenu implements ConsoleUiPlugin {
+public class TemperatureConverterMenu implements ConsoleUiPlugin {
 	private MenuHelper menuHelper;
 	
 	@Override
@@ -13,7 +13,7 @@ public class TemperatureKonverterMenu implements ConsoleUiPlugin {
 
 	@Override
 	public void showMenu() throws NotSupportedException {
-		KonverterTypePlugin konv = new TemperatureConverter();
+		ConverterTypePlugin konv = new TemperatureConverter();
 		String menuSource = menuHelper.generateAvailableConversionTypesMenuLines(konv, true);
 		System.out.println(menuSource);
 		

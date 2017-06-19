@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.List;
 
-public class SpeedConverter implements KonverterTypePlugin {
+public class SpeedConverter implements ConverterTypePlugin {
 	
 	public enum Type {
 	    kmh, ms

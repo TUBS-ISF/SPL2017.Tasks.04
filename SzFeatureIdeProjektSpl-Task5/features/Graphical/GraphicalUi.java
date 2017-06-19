@@ -10,17 +10,17 @@ import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JTextField;
 
-//import converter.KonverterTypePlugin;
-//import converter.LengthKonverter;
+//import converter.ConverterTypePlugin;
+//import converter.LengthConverter;
 //import converter.NotSupportedException;
 //import converter.TemperatureConverter;
 
 public class GraphicalUi extends JFrame{
 	private static final long serialVersionUID = 1520725678693523956L;
-	private KonverterTypePlugin converterPlugin;
+	private ConverterTypePlugin converterPlugin;
 	
 
-	public GraphicalUi(KonverterTypePlugin converterPlugin) {
+	public GraphicalUi(ConverterTypePlugin converterPlugin) {
 		super();
 		this.setTitle("Converter");
 		this.converterPlugin = converterPlugin;

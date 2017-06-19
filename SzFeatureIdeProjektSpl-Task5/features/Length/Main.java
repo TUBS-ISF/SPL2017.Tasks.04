@@ -9,8 +9,8 @@ public class Main {
 		
 		
 		System.out.println("Length Feature Active");
-		activatedConverterFeatures.konverterList.add(new LengthKonverter());
-		activatedConverterFeatures.konverterMenuList.add(new LengthKonverterMenu());
+		activatedConverterFeatures.konverterList.add(new LengthConverter());
+		activatedConverterFeatures.konverterMenuList.add(new LengthConverterMenu());
 	}
 
 }
