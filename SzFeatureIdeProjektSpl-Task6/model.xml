@@ -4,7 +4,7 @@
 		<struct>
 			<and abstract="true" mandatory="true" name="SzFeatureIdeProjektSplTask6">
 				<and abstract="true" mandatory="true" name="Einheiten-Converter">
-					<and mandatory="true" name="ConverterType">
+					<and abstract="true" mandatory="true" name="ConverterType">
 						<description>
 							The type of conversion
 						</description>
@@ -98,7 +98,7 @@
 									</description>
 								</feature>
 							</and>
-							<feature abstract="true" name="PlausibilityChecking">
+							<feature name="PlausibilityChecking">
 								<description>
 									Check if input is plausible
 								</description>
